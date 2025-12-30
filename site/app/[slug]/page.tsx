@@ -1,7 +1,7 @@
 import fs from "fs";
-import Link from "next/link";
 import path from "path";
 import Markdown from "react-markdown";
+import ImageLink from "../components/ImageLink";
 
 function getImageSlug(src: string | undefined | Blob): string | null {
 	if (!src || typeof src !== "string") return null;
@@ -37,27 +37,22 @@ export default async function Writing({
 				components={{
 					h1: ({ children }) => <h1>{children}</h1>,
 					h2: ({ children }) => <h2>{children}</h2>,
-					p: ({ children }) => <p>{children}</p>,
+					p: ({ children }) => <p className="mb-6">{children}</p>,
 					strong: ({ children }) => <strong>{children}</strong>,
 					em: ({ children }) => <em>{children}</em>,
 					img: ({ src, alt }) => {
 						const imageSlug = getImageSlug(src);
 						const imgSrc = typeof src === "string" ? src : undefined;
+						if (!imageSlug || !imgSrc) {
+							return <img src={imgSrc} alt={alt ?? ""} />;
+						}
 						return (
-							<Link
-								href={imageSlug ? `/images/${imageSlug}` : "#"}
-								className="backlink"
-							>
-								<span className="backlink-thumb">
-									<img src={imgSrc} alt="" className="thumb-img" />
-								</span>
-								{alt}
-								<img
-									src={imgSrc}
-									alt={alt ?? ""}
-									className="backlink-preview"
-								/>
-							</Link>
+							<ImageLink
+								href={`/images/${imageSlug}`}
+								src={imgSrc}
+								alt={alt ?? ""}
+								slug={imageSlug}
+							/>
 						);
 					},
 					a: ({ href, children }) => <a href={href}>{children}</a>,

@@ -1,4 +1,6 @@
-My interpretation of beauty is something that's being true to itself. Something that excellently serves the purpose it was intended for. 
+# On beauty
+
+Beauty is something that's being true to itself. Something that excellently serves the purpose it was intended for. 
 
 This can be found in a painting, where you clearly feel what the artist was trying to tell. 
 Or in products, where it's serving it's transmitted in the cleanest of channels.

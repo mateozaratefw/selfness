@@ -1,17 +1,36 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'Public Sans';
+  src: url('/fonts/PublicSans[wght].ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Public Sans';
+  src: url('/fonts/PublicSans-Italic[wght].ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
 :root {
   --bg: #faf9f7;
   --fg: #1a1a1a;
-  --accent: #2d5a27;
+  --primary: #d42a60;
+  --primary-dark: #a82250;
+  --primary-darker: #7d1a3c;
   --muted: #6b6b6b;
 }
 
 body {
   background: var(--bg);
   color: var(--fg);
-  font-family: "Newsreader", Georgia, serif;
+  font-family: 'Public Sans', system-ui, sans-serif;
   line-height: 1.7;
+  /* text-align: justify; */
 }
 
 main {
@@ -27,22 +46,17 @@ h1 {
   letter-spacing: -0.02em;
 }
 
-p {
-  margin-bottom: 1.5rem;
-}
-
 .backlink {
   position: relative;
   cursor: pointer;
-  border-bottom: 1px dashed var(--accent);
-  color: var(--accent);
+  color: var(--primary);
   transition: color 0.15s ease;
   white-space: nowrap;
   text-decoration: none;
 }
 
 .backlink:hover {
-  color: var(--fg);
+  color: var(--primary-dark);
 }
 
 /* Small thumbnail container */

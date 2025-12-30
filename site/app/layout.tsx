@@ -1,12 +1,6 @@
 import type { Metadata } from "next";
-import { Newsreader } from "next/font/google";
+import Link from "next/link";
 import "./globals.css";
-
-const newsreader = Newsreader({
-	subsets: ["latin"],
-	style: ["normal", "italic"],
-	weight: ["400", "500"],
-});
 
 export const metadata: Metadata = {
 	title: "writings",
@@ -21,7 +15,17 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={newsreader.className}>
+			<body>
+				<header className="max-w-[640px] mx-auto px-8 pt-8">
+					<Link href="/" className="block no-underline">
+						<div className="font-semibold text-base text-(--fg) leading-tight">
+							Mateo Zarate
+						</div>
+						<div className="text-base text-(--muted) leading-tight">
+							Co-founder at Melian
+						</div>
+					</Link>
+				</header>
 				{children}
 				{modal}
 			</body>
