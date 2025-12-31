@@ -58,6 +58,27 @@ export default function MiniPlayer() {
 		return () => window.removeEventListener("mousemove", handleMouseMove);
 	}, [state.currentTrack, visible]);
 
+	useEffect(() => {
+		const handleKeyDown = (e: KeyboardEvent) => {
+			if (!state.currentTrack) return;
+			if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
+			if (document.querySelector(".modal-overlay")) return;
+
+			if (e.code === "Space") {
+				e.preventDefault();
+				togglePlay(state.currentTrack);
+			} else if (e.code === "ArrowRight") {
+				e.preventDefault();
+				seek(Math.min(state.progress + 5, state.duration));
+			} else if (e.code === "ArrowLeft") {
+				e.preventDefault();
+				seek(Math.max(state.progress - 5, 0));
+			}
+		};
+		window.addEventListener("keydown", handleKeyDown);
+		return () => window.removeEventListener("keydown", handleKeyDown);
+	}, [state.currentTrack, state.progress, state.duration]);
+
 	const seekFromEvent = (clientX: number) => {
 		if (!progressRef.current || !state.duration) return;
 		const rect = progressRef.current.getBoundingClientRect();
@@ -198,6 +219,8 @@ export default function MiniPlayer() {
 								aria-valuemax={state.duration || 100}
 								aria-valuenow={state.progress}
 								onClick={handleProgressClick}
+								onMouseDown={handleDragStart}
+								onTouchStart={handleDragStart}
 								onKeyDown={(e) => {
 									if (!state.duration) return;
 									const step = state.duration * 0.05;
@@ -209,15 +232,8 @@ export default function MiniPlayer() {
 								className="h-[3px] bg-primary/20 cursor-pointer relative shrink-0"
 							>
 								<div
-									className="h-full bg-primary"
+									className="h-full bg-primary pointer-events-none rounded-r-full"
 									style={{ width: `${progressPercent}%` }}
-								/>
-								{/* Rectangle notch */}
-								<div
-									onMouseDown={handleDragStart}
-									onTouchStart={handleDragStart}
-									className="absolute top-1/2 -translate-y-1/2 w-[3px] h-[10px] bg-primary rounded-t-sm cursor-grab active:cursor-grabbing"
-									style={{ left: `calc(${progressPercent}% - 1.5px)` }}
 								/>
 							</div>
 						</div>

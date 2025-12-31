@@ -56,7 +56,7 @@ export default function Home() {
 						href="https://melian.com"
 						target="_blank"
 						rel="noopener noreferrer"
-						className="backlink"
+						className="backlink hover:text-primary-dark transition-colors"
 					>
 						Melian
 					</a>
