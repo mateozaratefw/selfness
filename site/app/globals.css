@@ -79,19 +79,6 @@ h2 {
 }
 
 
-.backlink {
-  position: relative;
-  cursor: pointer;
-  color: var(--primary);
-  transition: color 0.15s ease;
-  white-space: nowrap;
-  text-decoration: none;
-}
-
-.backlink:hover {
-  color: var(--primary-dark);
-}
-
 /* Small thumbnail container */
 .backlink-thumb {
   display: inline-block;
@@ -108,51 +95,6 @@ h2 {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-
-/* Invisible bridge that maintains hover when moving to image */
-.backlink::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 100%;
-  width: 400px;
-  height: 24px;
-  display: none;
-}
-
-.backlink:hover::after {
-  display: block;
-}
-
-/* Large preview image */
-.backlink-preview {
-  position: absolute;
-  left: 50%;
-  top: calc(100% + 16px);
-  transform: translateX(-50%) scale(0.96);
-  transform-origin: top center;
-  max-width: 380px;
-  max-height: 320px;
-  object-fit: contain;
-  border-radius: 6px;
-  box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.18),
-    0 0 0 1px rgba(0, 0, 0, 0.06);
-  z-index: 100;
-  opacity: 0;
-  pointer-events: none;
-  transition: 
-    opacity 0.2s ease,
-    transform 0.2s ease;
-}
-
-.backlink:hover .backlink-preview {
-  opacity: 1;
-  transform: translateX(-50%) scale(1);
-  pointer-events: auto;
 }
 
 /* Image page styles */

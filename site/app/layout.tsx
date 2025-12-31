@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import "./globals.css";
+import MiniPlayer from "./components/MiniPlayer";
 
 export const metadata: Metadata = {
 	title: "writings",
@@ -28,6 +29,7 @@ export default function RootLayout({
 				</header>
 				{children}
 				{modal}
+				<MiniPlayer />
 			</body>
 		</html>
 	);

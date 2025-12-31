@@ -1,7 +1,9 @@
 import fs from "fs";
 import path from "path";
+import React from "react";
 import Markdown from "react-markdown";
 import ImageLink from "../components/ImageLink";
+import MusicPlayer from "../components/MusicPlayer";
 
 function getImageSlug(src: string | undefined | Blob): string | null {
 	if (!src || typeof src !== "string") return null;
@@ -26,6 +28,48 @@ function stripFrontmatter(content: string) {
 	return content.replace(/^---\n[\s\S]*?\n---\n/, "");
 }
 
+function processMusicLinks(children: React.ReactNode): React.ReactNode {
+	const childArray = React.Children.toArray(children);
+	const result: React.ReactNode[] = [];
+
+	for (let i = 0; i < childArray.length; i++) {
+		const child = childArray[i];
+		const nextChild = childArray[i + 1];
+
+		if (
+			typeof child === "string" &&
+			child.endsWith("▶") &&
+			React.isValidElement(nextChild) &&
+			typeof nextChild.props?.href === "string" &&
+			nextChild.props.href.endsWith(".mp3")
+		) {
+			const textBefore = child.slice(0, -1);
+			if (textBefore) result.push(textBefore);
+
+			// Parse: Title|Album|Cover from link text
+			const linkText = String(nextChild.props.children);
+			const parts = linkText.split("|");
+			const title = parts[0] || linkText;
+			const album = parts[1] || "";
+			const cover = parts[2] || "";
+
+			result.push(
+				<MusicPlayer
+					key={`music-${i}`}
+					src={nextChild.props.href}
+					title={title}
+					album={album}
+					cover={cover}
+				/>
+			);
+			i++;
+		} else {
+			result.push(child);
+		}
+	}
+	return result;
+}
+
 export default async function Writing({
 	params,
 }: {
@@ -42,7 +86,9 @@ export default async function Writing({
 				components={{
 					h1: ({ children }) => <h1>{children}</h1>,
 					h2: ({ children }) => <h2>{children}</h2>,
-					p: ({ children }) => <p className="mb-6">{children}</p>,
+					p: ({ children }) => (
+						<p className="mb-6">{processMusicLinks(children)}</p>
+					),
 					strong: ({ children }) => <strong>{children}</strong>,
 					em: ({ children }) => <em>{children}</em>,
 					img: ({ src, alt }) => {
