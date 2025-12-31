@@ -3,6 +3,7 @@ interface TextWithImageProps {
 	alt: string;
 	href?: string;
 	className?: string;
+	imgClassName?: string;
 }
 
 export default function TextWithImage({
@@ -10,11 +11,12 @@ export default function TextWithImage({
 	alt,
 	href,
 	className = "",
+	imgClassName = "",
 }: TextWithImageProps) {
 	const content = (
 		<>
 			<span className="backlink-thumb">
-				<img src={src} alt="" className="thumb-img" />
+				<img src={src} alt="" className={`thumb-img ${imgClassName}`} />
 			</span>
 			{alt}
 		</>

@@ -41,14 +41,6 @@ export default function Modal({ children }: { children: React.ReactNode }) {
 			aria-modal="true"
 			tabIndex={-1}
 		>
-			<button
-				type="button"
-				className="modal-close"
-				onClick={onDismiss}
-				aria-label="Close"
-			>
-				×
-			</button>
 			<div className="modal-content">{children}</div>
 		</div>
 	);

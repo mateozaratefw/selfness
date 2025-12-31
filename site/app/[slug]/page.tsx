@@ -22,6 +22,10 @@ export async function generateStaticParams() {
 	return files.map((file) => ({ slug: file.replace(".md", "") }));
 }
 
+function stripFrontmatter(content: string) {
+	return content.replace(/^---\n[\s\S]*?\n---\n/, "");
+}
+
 export default async function Writing({
 	params,
 }: {
@@ -29,7 +33,8 @@ export default async function Writing({
 }) {
 	const { slug } = await params;
 	const filePath = path.join(process.cwd(), "..", "writings", `${slug}.md`);
-	const content = fs.readFileSync(filePath, "utf-8");
+	const rawContent = fs.readFileSync(filePath, "utf-8");
+	const content = stripFrontmatter(rawContent);
 
 	return (
 		<main>

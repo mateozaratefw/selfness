@@ -33,12 +33,7 @@ export default function ImageLink({ href, src, alt, slug }: ImageLinkProps) {
 	return (
 		<Link href={href} className="backlink" onClick={handleClick}>
 			<TextWithImage src={src} alt={alt} className="contents" />
-			<img
-				src={src}
-				alt={alt}
-				className="backlink-preview"
-				style={{ viewTransitionName: `image-${slug}` }}
-			/>
+			<img src={src} alt={alt} className="backlink-preview" />
 		</Link>
 	);
 }

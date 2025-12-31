@@ -1,3 +1,8 @@
+---
+title: On beauty
+date: 2025-12-30
+---
+
 # On beauty
 
 Beauty is something that's being true to itself. Something that excellently serves the purpose it was intended for. 
@@ -14,6 +19,12 @@ I've come to grasp some sort of intuition on what's beautiful, so I can enjoy th
 
 On my personal work, I surely must not try and seek to make the user feel this way. I believe strangeness is not to be *generated*. **My work is true to itself** and if it's strange, let there be it.
 
-Some stuff I find beautiful: 
+## Some stuff I find beautiful: 
 
-![Alexander McQueen scarf](/images/alexander-mcqueen-scarf_blue.webp). It's odd, slightly cringy and has the minimum amount of darkness. It's so McQueen it hurts. 
+![Alexander McQueen scarf](/images/alexander-mcqueen-scarf_blue.jpg). It's odd, slightly cringy and has the minimum amount of darkness. It's so McQueen it hurts. 
+
+![Fansworth House](/images/FarnsworthHouse-Mies-5.jpg). Peak minimalism while stating it's position in nature. It's a minumum intervention of men in nature. Useful, simple. 
+
+![Concorde](/images/concorde.jpg). Commercial speed at it's peak. It's the fastest way of moving for people and it feels like it. It's design it's derived out from the engineering excelence it took to be made. 
+
+![SR-71 Blackbird](/images/Lockheed_SR-71_Blackbird.jpg). Commercial speed at it's peak. It's the fastest way of moving for people and it feels like it. It's design it's derived out from the engineering excelence it took to be made. 
