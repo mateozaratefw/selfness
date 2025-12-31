@@ -20,17 +20,24 @@ export default function CarouselModal({
 }: CarouselModalProps) {
 	const router = useRouter();
 	const [currentIndex, setCurrentIndex] = useState(initialIndex);
+	const [isLoading, setIsLoading] = useState(true);
 
 	const currentImage = images[currentIndex];
 	const hasPrev = currentIndex > 0;
 	const hasNext = currentIndex < images.length - 1;
 
 	const goToPrev = useCallback(() => {
-		if (hasPrev) setCurrentIndex((i) => i - 1);
+		if (hasPrev) {
+			setIsLoading(true);
+			setCurrentIndex((i) => i - 1);
+		}
 	}, [hasPrev]);
 
 	const goToNext = useCallback(() => {
-		if (hasNext) setCurrentIndex((i) => i + 1);
+		if (hasNext) {
+			setIsLoading(true);
+			setCurrentIndex((i) => i + 1);
+		}
 	}, [hasNext]);
 
 	const onDismiss = useCallback(() => {
@@ -97,12 +104,18 @@ export default function CarouselModal({
 			{/* Image content */}
 			<div className="modal-content">
 				<figure className="modal-image-container">
+					{isLoading && (
+						<div className="absolute inset-0 flex items-center justify-center">
+							<div className="w-12 h-12 border-4 border-black/10 border-t-black/40 rounded-full animate-spin" />
+						</div>
+					)}
 					<Image
 						src={currentImage.src}
 						alt={currentImage.title}
 						className="modal-image max-h-[80vh] max-w-[85vw] h-auto w-auto"
 						width={1200}
 						height={800}
+						onLoad={() => setIsLoading(false)}
 					/>
 					<figcaption className="modal-image-title">
 						{currentImage.title}

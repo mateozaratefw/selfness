@@ -1,8 +1,8 @@
 import fs from "fs";
-import Image from "next/image";
 import path from "path";
 import CarouselModal from "../../../components/CarouselModal";
 import Modal from "../../../components/Modal";
+import SingleImageModal from "../../../components/SingleImageModal";
 
 const SUPPORTED_EXTENSIONS = [".jpg", ".jpeg", ".png", ".gif", ".webp", ".svg", ".avif"];
 
@@ -114,18 +114,5 @@ export default async function ImageModal({
 		);
 	}
 
-	return (
-		<Modal>
-			<figure className="modal-image-container">
-				<Image
-					src={image.src}
-					alt={image.title}
-					width={1200}
-					height={800}
-					className="modal-image max-h-[80vh] max-w-[85vw] h-auto w-auto"
-				/>
-				<figcaption className="modal-image-title">{image.title}</figcaption>
-			</figure>
-		</Modal>
-	);
+	return <SingleImageModal src={image.src} title={image.title} />;
 }
