@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 interface TextWithImageProps {
 	src: string | undefined;
 	alt: string;
@@ -16,7 +18,15 @@ export default function TextWithImage({
 	const content = (
 		<>
 			<span className="backlink-thumb">
-				<img src={src} alt="" className={`thumb-img ${imgClassName}`} />
+				{src && (
+					<Image
+						src={src}
+						alt=""
+						width={24}
+						height={24}
+						className={`thumb-img ${imgClassName}`}
+					/>
+				)}
 			</span>
 			{alt}
 		</>

@@ -1,4 +1,5 @@
 import fs from "fs";
+import Image from "next/image";
 import path from "path";
 import CarouselModal from "../../../components/CarouselModal";
 import Modal from "../../../components/Modal";
@@ -116,7 +117,13 @@ export default async function ImageModal({
 	return (
 		<Modal>
 			<figure className="modal-image-container">
-				<img src={image.src} alt={image.title} className="modal-image" />
+				<Image
+					src={image.src}
+					alt={image.title}
+					width={1200}
+					height={800}
+					className="modal-image max-h-[80vh] max-w-[85vw] h-auto w-auto"
+				/>
 				<figcaption className="modal-image-title">{image.title}</figcaption>
 			</figure>
 		</Modal>

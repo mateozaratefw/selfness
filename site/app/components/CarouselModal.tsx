@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 
@@ -63,6 +64,9 @@ export default function CarouselModal({
 		<div
 			className="modal-overlay"
 			onClick={handleOverlayClick}
+			onKeyDown={(e) => {
+				if (e.key === "Escape") onDismiss();
+			}}
 			role="dialog"
 			aria-modal="true"
 			tabIndex={-1}
@@ -72,10 +76,19 @@ export default function CarouselModal({
 				<button
 					type="button"
 					onClick={goToPrev}
-					className="carousel-arrow carousel-arrow-left"
+					className="fixed top-1/2 left-8 -translate-y-1/2 w-9 h-9 flex items-center justify-center bg-white/90 border border-black/15 rounded-full cursor-pointer text-fg transition-colors hover:bg-white hover:border-black/25 z-[1001]"
 					aria-label="Previous image"
 				>
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+					<svg
+						width="24"
+						height="24"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						strokeWidth="2"
+						aria-hidden="true"
+					>
+						<title>Previous</title>
 						<path d="M15 18l-6-6 6-6" />
 					</svg>
 				</button>
@@ -84,10 +97,12 @@ export default function CarouselModal({
 			{/* Image content */}
 			<div className="modal-content">
 				<figure className="modal-image-container">
-					<img
+					<Image
 						src={currentImage.src}
 						alt={currentImage.title}
-						className="modal-image"
+						className="modal-image max-h-[80vh] max-w-[85vw] h-auto w-auto"
+						width={1200}
+						height={800}
 					/>
 					<figcaption className="modal-image-title">
 						{currentImage.title}
@@ -105,10 +120,19 @@ export default function CarouselModal({
 				<button
 					type="button"
 					onClick={goToNext}
-					className="carousel-arrow carousel-arrow-right"
+					className="fixed top-1/2 right-8 -translate-y-1/2 w-9 h-9 flex items-center justify-center bg-white/90 border border-black/15 rounded-full cursor-pointer text-fg transition-colors hover:bg-white hover:border-black/25 z-[1001]"
 					aria-label="Next image"
 				>
-					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+					<svg
+						width="24"
+						height="24"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						strokeWidth="2"
+						aria-hidden="true"
+					>
+						<title>Next</title>
 						<path d="M9 18l6-6-6-6" />
 					</svg>
 				</button>

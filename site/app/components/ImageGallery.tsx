@@ -15,6 +15,7 @@ export default function ImageGallery({ images, alt }: ImageGalleryProps) {
 	const router = useRouter();
 	const linkRef = useRef<HTMLAnchorElement>(null);
 	const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+	const preloadedRef = useRef(false);
 	const [openDirection, setOpenDirection] = useState<"top" | "bottom">("bottom");
 	const [isHovering, setIsHovering] = useState(false);
 
@@ -47,7 +48,19 @@ export default function ImageGallery({ images, alt }: ImageGalleryProps) {
 		hoverTimeoutRef.current = setTimeout(() => {
 			setIsHovering(true);
 		}, 50);
-	}, [updateOpenDirection]);
+
+		// Preload all carousel images (only once)
+		if (!preloadedRef.current) {
+			preloadedRef.current = true;
+			images.forEach((img) => {
+				const link = document.createElement("link");
+				link.rel = "preload";
+				link.as = "image";
+				link.href = img.src;
+				document.head.appendChild(link);
+			});
+		}
+	}, [updateOpenDirection, images]);
 
 	const handleMouseLeave = useCallback(() => {
 		if (hoverTimeoutRef.current) {
@@ -83,16 +96,13 @@ export default function ImageGallery({ images, alt }: ImageGalleryProps) {
 		>
 			<TextWithImage src={firstImage.src} alt={alt} className="contents" />
 			<span
-				className={`
-					absolute left-1/2 -translate-x-1/2 z-100
-					${openDirection === "top" ? "bottom-full pb-4 origin-bottom" : "top-full pt-4 origin-top"}
-					transition-all duration-200
-					${
-						isHovering
-							? "opacity-100 scale-100 pointer-events-auto ease-in"
-							: "opacity-0 scale-[0.96] pointer-events-none ease-out"
-					}
-				`}
+				className={[
+					"absolute left-1/2 -translate-x-1/2 z-100 transition-all duration-200",
+					openDirection === "top" ? "bottom-full pb-4 origin-bottom" : "top-full pt-4 origin-top",
+					isHovering
+						? "opacity-100 scale-100 pointer-events-auto ease-in"
+						: "opacity-0 scale-[0.96] pointer-events-none ease-out",
+				].join(" ")}
 			>
 				<Image
 					src={firstImage.src}

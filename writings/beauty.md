@@ -15,9 +15,9 @@ Another example is brutalism. The best brutalism makes you feel horror and desol
 
 Obviously we can also find beauty in playful, joyful things. I believe nothing comes closer to representing that in the tech realm than the ![Apple iMac G3](/images/imac-g3). It's see-trough -- it has nothing to hide, it has a handle so you can move it around as you want and its colorful! it charms you just to see it, and anyone from a child to an old IBM manager would be happy to have one on their desk. 
 
-I've arrived to this definition of beauty after asking myself why I liked the ![Buenos Aires IBM building](/images/ibm-building-buenos-aires.webp) so much. It's just a boring, office building and there is nothing more IBM than that. It even looks like a boring computer. 
+I've arrived to this definition after asking myself why I liked the ![Buenos Aires IBM building](/images/ibm-building-buenos-aires.webp) so much. It's just a boring, office building and there is nothing more IBM than that. It even looks like a boring computer. **It's absolutely true to itself.**
 
-The best UI animations resemble real life physics because apps are tools and non-digital tools react to movement that way. 
+When building something—whether coding or designing—I always ask myself: what's this for? I firmly believe that beautiful things exist for a reason. No one creates incredible things accidentally. 
 
 ## Some stuff I find beautiful: 
 

@@ -22,10 +22,18 @@ export default function RootLayout({
 						<div className="font-semibold text-base text-(--fg) leading-tight">
 							Mateo Zarate
 						</div>
-						<div className="text-base text-(--muted) leading-tight">
-							Co-founder at Melian
-						</div>
 					</Link>
+					<div className="text-base text-(--muted) leading-tight">
+						Co-founder at{" "}
+						<a
+							href="https://melian.com"
+							target="_blank"
+							rel="noopener noreferrer"
+							className="backlink hover:text-primary-dark transition-colors"
+						>
+							Melian
+						</a>
+					</div>
 				</header>
 				{children}
 				{modal}
