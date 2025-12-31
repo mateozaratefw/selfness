@@ -59,18 +59,21 @@ function processMusicLinks(children: React.ReactNode): React.ReactNode {
 		const child = childArray[i];
 		const nextChild = childArray[i + 1];
 
+		const nextProps = React.isValidElement(nextChild)
+			? (nextChild.props as { href?: string; children?: React.ReactNode })
+			: null;
+
 		if (
 			typeof child === "string" &&
 			child.endsWith("▶") &&
-			React.isValidElement(nextChild) &&
-			typeof nextChild.props?.href === "string" &&
-			nextChild.props.href.endsWith(".mp3")
+			nextProps &&
+			typeof nextProps.href === "string" &&
+			nextProps.href.endsWith(".mp3")
 		) {
 			const textBefore = child.slice(0, -1);
 			if (textBefore) result.push(textBefore);
 
-			// Parse: Title|Album|Cover from link text
-			const linkText = String(nextChild.props.children);
+			const linkText = String(nextProps.children);
 			const parts = linkText.split("|");
 			const title = parts[0] || linkText;
 			const album = parts[1] || "";
@@ -79,7 +82,7 @@ function processMusicLinks(children: React.ReactNode): React.ReactNode {
 			result.push(
 				<MusicPlayer
 					key={`music-${i}`}
-					src={nextChild.props.href}
+					src={nextProps.href}
 					title={title}
 					album={album}
 					cover={cover}
