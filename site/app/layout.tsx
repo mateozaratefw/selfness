@@ -17,25 +17,27 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body>
-				<header className="max-w-[640px] mx-auto px-8 pt-8">
-					<Link href="/" className="block no-underline">
-						<div className="font-semibold text-base text-(--fg) leading-tight">
-							Mateo Zarate
+				<div className="max-w-[640px] mx-auto px-4 sm:px-8">
+					<header className="pt-8">
+						<Link href="/" className="block no-underline">
+							<div className="font-semibold text-base text-(--fg) leading-tight">
+								Mateo Zarate
+							</div>
+						</Link>
+						<div className="text-base text-(--muted) leading-tight">
+							Co-founder at{" "}
+							<a
+								href="https://melian.com"
+								target="_blank"
+								rel="noopener noreferrer"
+								className="backlink md:hover:text-primary-dark transition-colors"
+							>
+								Melian
+							</a>
 						</div>
-					</Link>
-					<div className="text-base text-(--muted) leading-tight">
-						Co-founder at{" "}
-						<a
-							href="https://melian.com"
-							target="_blank"
-							rel="noopener noreferrer"
-							className="backlink hover:text-primary-dark transition-colors"
-						>
-							Melian
-						</a>
-					</div>
-				</header>
-				{children}
+					</header>
+					{children}
+				</div>
 				{modal}
 				<MiniPlayer />
 			</body>

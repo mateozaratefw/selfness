@@ -146,14 +146,14 @@ export default function MiniPlayer() {
 					animate={{ y: 0, opacity: 1 }}
 					exit={{ y: 100, opacity: 0 }}
 					transition={{ type: "spring", damping: 25, stiffness: 300 }}
-					className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 w-full max-w-[640px] px-7"
+					className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 w-full max-w-[640px] px-4 sm:px-8"
 				>
 					<div className="bg-white/95 backdrop-blur-xl rounded-lg  overflow-hidden flex h-[52px]  border border-muted/10">
 						{/* Play/Stop button - same width as album (52px) */}
 						<button
 							type="button"
 							onClick={handleToggle}
-							className="w-[52px] flex items-center justify-center text-muted hover:text-fg transition-colors shrink-0"
+							className="w-[52px] flex items-center justify-center text-muted md:hover:text-fg transition-colors shrink-0"
 						>
 							{state.isPlaying ? (
 								<svg

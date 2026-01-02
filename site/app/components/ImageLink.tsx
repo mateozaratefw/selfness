@@ -73,7 +73,7 @@ export default function ImageLink({ href, src, alt, slug }: ImageLinkProps) {
 	return (
 		<Link
 			href={href}
-			className="relative cursor-pointer text-primary hover:text-primary-dark transition-colors duration-150 whitespace-nowrap no-underline"
+			className="relative cursor-pointer text-primary md:hover:text-primary-dark transition-colors duration-150 whitespace-nowrap no-underline"
 			onClick={handleClick}
 			onMouseEnter={handleMouseEnter}
 			onMouseLeave={handleMouseLeave}

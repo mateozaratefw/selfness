@@ -83,12 +83,11 @@ export default function CarouselModal({
 				<button
 					type="button"
 					onClick={goToPrev}
-					className="fixed top-1/2 left-8 -translate-y-1/2 w-9 h-9 flex items-center justify-center bg-white/90 border border-black/15 rounded-full cursor-pointer text-fg transition-colors hover:bg-white hover:border-black/25 z-[1001]"
+					className="fixed top-1/2 left-1 sm:left-4 md:left-8 -translate-y-1/2 w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center bg-white/90 border border-black/15 rounded-full cursor-pointer text-fg transition-colors md:hover:bg-white md:hover:border-black/25 z-[1001]"
 					aria-label="Previous image"
 				>
 					<svg
-						width="24"
-						height="24"
+						className="w-5 h-5 sm:w-6 sm:h-6"
 						viewBox="0 0 24 24"
 						fill="none"
 						stroke="currentColor"
@@ -106,18 +105,18 @@ export default function CarouselModal({
 				<figure className="modal-image-container">
 					{isLoading && (
 						<div className="absolute inset-0 flex items-center justify-center">
-							<div className="w-12 h-12 border-4 border-black/10 border-t-black/40 rounded-full animate-spin" />
+							<div className="w-8 h-8 sm:w-12 sm:h-12 border-4 border-black/10 border-t-black/40 rounded-full animate-spin" />
 						</div>
 					)}
 					<Image
 						src={currentImage.src}
 						alt={currentImage.title}
-						className="modal-image max-h-[80vh] max-w-[85vw] h-auto w-auto"
+						className="modal-image max-h-[70vh] max-w-[calc(100vw-4rem)] sm:max-h-[75vh] sm:max-w-[calc(100vw-8rem)] md:max-h-[80vh] md:max-w-[85vw] h-auto w-auto"
 						width={1200}
 						height={800}
 						onLoad={() => setIsLoading(false)}
 					/>
-					<figcaption className="modal-image-title">
+					<figcaption className="modal-image-title px-4 sm:px-0">
 						{currentImage.title}
 						{images.length > 1 && (
 							<span className="carousel-indicator">
@@ -133,12 +132,11 @@ export default function CarouselModal({
 				<button
 					type="button"
 					onClick={goToNext}
-					className="fixed top-1/2 right-8 -translate-y-1/2 w-9 h-9 flex items-center justify-center bg-white/90 border border-black/15 rounded-full cursor-pointer text-fg transition-colors hover:bg-white hover:border-black/25 z-[1001]"
+					className="fixed top-1/2 right-1 sm:right-4 md:right-8 -translate-y-1/2 w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center bg-white/90 border border-black/15 rounded-full cursor-pointer text-fg transition-colors md:hover:bg-white md:hover:border-black/25 z-[1001]"
 					aria-label="Next image"
 				>
 					<svg
-						width="24"
-						height="24"
+						className="w-5 h-5 sm:w-6 sm:h-6"
 						viewBox="0 0 24 24"
 						fill="none"
 						stroke="currentColor"

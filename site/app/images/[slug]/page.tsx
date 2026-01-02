@@ -53,10 +53,10 @@ export default async function ImagePage({
 			</main>
 		);
 	}
-	
+
 	const title = formatTitle(imageFile);
 	const imagePath = `/images/${imageFile}`;
-	
+
 	return (
 		<main className="image-page">
 			<Link href="/" className="back-link">← Back</Link>

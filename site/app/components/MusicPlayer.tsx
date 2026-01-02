@@ -29,7 +29,7 @@ export default function MusicPlayer({
 	return (
 		<button
 			onClick={handleClick}
-			className="inline-flex items-baseline gap-1 bg-transparent border-none p-0 m-0 font-[inherit] cursor-pointer text-primary hover:text-primary-dark transition-colors duration-150"
+			className="inline-flex items-baseline gap-1 bg-transparent border-none p-0 m-0 font-[inherit] cursor-pointer text-primary md:hover:text-primary-dark transition-colors duration-150"
 		>
 			{isPlaying ? (
 				<svg

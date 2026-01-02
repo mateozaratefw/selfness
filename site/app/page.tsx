@@ -56,7 +56,7 @@ export default function Home() {
 						href="https://melian.com"
 						target="_blank"
 						rel="noopener noreferrer"
-						className="backlink hover:text-primary-dark transition-colors"
+						className="backlink md:hover:text-primary-dark transition-colors"
 					>
 						Melian
 					</a>
@@ -71,7 +71,7 @@ export default function Home() {
 						href={`/${w.slug}`}
 						className="flex justify-between items-center"
 					>
-						<span className="hover:text-primary-dark transition-colors">
+						<span className="md:hover:text-primary-dark transition-colors">
 							{w.title.charAt(0).toUpperCase() + w.title.slice(1)}
 						</span>
 						{w.date && <span>{formatDate(w.date)}</span>}
