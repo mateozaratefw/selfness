@@ -3,7 +3,19 @@
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef } from "react";
 
-export default function Modal({ children }: { children: React.ReactNode }) {
+interface ModalProps {
+	children: React.ReactNode;
+	/** Content rendered outside modal-content (e.g., nav buttons) */
+	outsideContent?: React.ReactNode;
+	/** Custom keyboard handler for additional keys (Escape is always handled) */
+	onKeyDown?: (e: KeyboardEvent) => void;
+}
+
+export default function Modal({
+	children,
+	outsideContent,
+	onKeyDown: customKeyDown,
+}: ModalProps) {
 	const router = useRouter();
 	const overlayRef = useRef<HTMLDivElement>(null);
 
@@ -11,19 +23,20 @@ export default function Modal({ children }: { children: React.ReactNode }) {
 		router.back();
 	}, [router]);
 
-	const onKeyDown = useCallback(
+	const handleKeyDown = useCallback(
 		(e: KeyboardEvent) => {
 			if (e.key === "Escape") {
 				onDismiss();
 			}
+			customKeyDown?.(e);
 		},
-		[onDismiss],
+		[onDismiss, customKeyDown],
 	);
 
 	useEffect(() => {
-		document.addEventListener("keydown", onKeyDown);
-		return () => document.removeEventListener("keydown", onKeyDown);
-	}, [onKeyDown]);
+		document.addEventListener("keydown", handleKeyDown);
+		return () => document.removeEventListener("keydown", handleKeyDown);
+	}, [handleKeyDown]);
 
 	const handleOverlayClick = (e: React.MouseEvent) => {
 		if (e.target === overlayRef.current) {
@@ -41,6 +54,7 @@ export default function Modal({ children }: { children: React.ReactNode }) {
 			aria-modal="true"
 			tabIndex={-1}
 		>
+			{outsideContent}
 			<div className="modal-content">{children}</div>
 		</div>
 	);
