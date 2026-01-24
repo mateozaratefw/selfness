@@ -142,7 +142,7 @@ export default async function Writing({
 							/>
 						);
 					},
-					a: ({ href, children }) => <a href={href}>{children}</a>,
+					a: ({ href, children }) => <a href={href} className="text-primary underline hover:text-primary-dark">{children}</a>,
 					ul: ({ children }) => <ul>{children}</ul>,
 					li: ({ children }) => <li>{children}</li>,
 				}}
